@@ -63,6 +63,7 @@ def tobs():
 
 @app.route("/api/v1.0/<start>")
 def startset(start):
+    yearset = dt.date(2017,8,23) - dt.timedelta(days=365)
     starter = session.query(Measurement.date, func.min(Measurement.tobs), func.avg(Measurement.tobs), func.max(Measurement.tobs)).\
         filter(Measurement.date >= yearset).all()
     session.close()
